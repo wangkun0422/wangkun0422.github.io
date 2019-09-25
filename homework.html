@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery/jquery1.9/jquery-1.9.0.js"></script>
+	<style type="text/css">
+	   #div0{
+	   	    height:150px;
+	   	    width:630px;
+	   	    margin:0 auto;
+	   }
+	   #div0 div{
+          width:200px;
+          height:150px;
+          float:left;
+	   }
+	   input{
+           margin-top:40px;
+	   }
+	   select{
+	   	  height:150px;
+	   	  width:80px;
+	   }
+	</style>
+</head>
+<body>
+	<div id="div0">
+	    <div>
+	    	<select size:"10" multiple id="left">
+	    		<option>选项A</option>
+	    		<option>选项B</option>
+	    		<option>选项C</option>
+	    		<option>选项D</option>
+	    		<option>选项E</option>
+	    	</select>
+	    </div>
+	    <div>
+	    	<input type="button" value="向右偏移">
+	    	<br>
+	    	<input type="button" value="全部右移">
+	    </div>
+	    <div>
+	    	<select id="right" size:"10" multiple ></select>
+	    </div>
+	</div>
+	<script type="text/javascript">
+         // 单个移动
+        $("input:eq(0)").click(function(){
+			$("#left option:selected").each(function(index,items){
+				$(items).clone().appendTo($("#right"));
+				$(items).remove();
+			});
+		});
+
+        // 全部右移
+		$("input:eq(1)").click(function(){
+			$("#left option").each(function(index,items){
+				$(items).clone().appendTo($("#right"));
+				$(items).remove();
+			});
+		});
+
+  
+        // 双击右移
+		$("#left option").dblclick(function(obj) {
+			$(this).clone().appendTo($("#right"));
+			$(this).remove();
+		});
+
+
+
+		
+
+		
+	</script>
+</body>
+</html>
